@@ -17,10 +17,10 @@ global.menuSound = sndJump;         //Sets what sound to use for navigating the 
 
 //World
 global.startRoom = rSample;         //Sets which room to begin with
-global.roomCaptionDef = "YoYoYo Engine Verve Edition";  //Sets default window caption (only works with the Professional version of Studio)
+global.roomCaptionDef = "Secret Santa 2024";  //Sets default window caption (only works with the Professional version of Studio)
 global.deathMusicMode = 0;          //Sets whether or not to play death music when the player dies (0 = no death music, 1 = instantly pause current music, 2 = fade out current music)
 global.pauseDelayLength = 40;       //Sets the delay in frames in which the player can pause/unpause the game (can be set to 0 to disable pause delay)
-global.timeWhenDead = true;         //Sets whether or not to count the in-game timer when the player is dead
+global.timeWhenDead = false;         //Sets whether or not to count the in-game timer when the player is dead
 global.timeWhenCleared = false;     //Increment the timer after the save file is considered finished
 global.platformsPhase = false;      //Sets whether or not to let the player fall through the platform or into the block when pushing them against a ceiling.
 global.blocksCrush = true;          //Makes getting stuck in the wall due to moving blocks or platforms kill the player.
@@ -28,7 +28,7 @@ global.blocksCrush = true;          //Makes getting stuck in the wall due to mov
 //Player
 global.adAlign = false;             //Sets whether or not to enable A/D align
 global.edgeDeath = true;            //Sets whether to kill the player when they leave the boundaries of the room
-global.directionalTapFix = false;   //Sets whether to change the behavior of tapping left/right for less than 1 frame (by default the player does not move when this happens, enabling this always moves the player for 1 frame when left/right is tapped)
+global.directionalTapFix = true;   //Sets whether to change the behavior of tapping left/right for less than 1 frame (by default the player does not move when this happens, enabling this always moves the player for 1 frame when left/right is tapped)
 global.strictSaveBlockers = true;   //Bullets check for saveblocker collision when created instead of only after a frame of movement
 global.fixBulletHeight = true;      //Spawns bullets 3px higher, accurate to where the gun is.
 
@@ -42,12 +42,10 @@ global.controllerEnabled = true;    //Sets whether controllers are supported
 global.controllerDelayLength = 5;   //Sets the delay in frames in which the player can switch between keyboard/controller (can be set to 0 to disable delay)
 
 //Difficulty
-global.difficultyCount = 4;
+global.difficultyCount = 2;
 global.difficultyNames[0] = "Load Game";
-global.difficultyNames[1] = "Medium";
-global.difficultyNames[2] = "Hard";
-global.difficultyNames[3] = "Very Hard";
-global.difficultyNames[4] = "Impossible";
+global.difficultyNames[1] = "Bow";
+global.difficultyNames[2] = "No Bow";
 
 //Savefiles
 global.md5StrAdd = "Put something here"; //sets what to add to the end of md5 input string to make the save harder to mess with, can be changed to anything, should be set to something unique and hard to predict (like setting a password)
