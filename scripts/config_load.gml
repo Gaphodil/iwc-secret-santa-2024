@@ -9,12 +9,16 @@ global.volumeLevel = clamp(floor(ini_read_real("Settings", "Volume_level", 25)),
 global.fullscreenMode = ini_read_real("Settings", "Fullscreen_mode", false);
 global.smoothingMode = ini_read_real("Settings", "Smoothing_mode", false);
 global.vsyncMode = ini_read_real("Settings", "Vsync_mode", false);
+global.windowScale = clamp(floor(ini_read_real("Settings", "Window_scale", 2)), 1, 8) / 2;
 
 audio_master_gain(global.volumeLevel/100);
 window_set_fullscreen(global.fullscreenMode);
 if (global.vsyncMode) {
     set_vsync();
 }
+global.windowWidth  = global.defaultWindowWidth * global.windowScale;
+global.windowHeight = global.defaultWindowHeight * global.windowScale;
+update_window_size();
 
 input_define("loadKeyboardConfig");
 
