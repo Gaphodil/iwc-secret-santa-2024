@@ -7,7 +7,7 @@ ini_open("config.ini");
 global.muteMusic = ini_read_real("Settings", "Mute_music", false);
 global.volumeLevel = clamp(floor(ini_read_real("Settings", "Volume_level", 25)), 0, 100);
 global.fullscreenMode = ini_read_real("Settings", "Fullscreen_mode", false);
-global.smoothingMode = ini_read_real("Settings", "Smoothing_mode", false);
+// global.smoothingMode = ini_read_real("Settings", "Smoothing_mode", false);
 global.vsyncMode = ini_read_real("Settings", "Vsync_mode", false);
 global.windowScale = clamp(floor(ini_read_real("Settings", "Window_scale", 2)), 1, 8) / 2;
 

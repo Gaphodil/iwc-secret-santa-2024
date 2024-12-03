@@ -522,7 +522,68 @@ volumeDelay = 10;
 // create an animSyncer for cherries
 instance_create(-32, -32, objAnimSyncer);
 
+// create px upscaler
+u_texelsPerPixel = shader_get_uniform(sh_pxUpscale,"u_texelsPerPixel");
+
 room_goto_next();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="76">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///px upscaler
+var windowWidth = window_get_width();
+var windowHeight = window_get_height();
+
+texture_set_repeat(false);
+
+draw_enable_alphablend(false);
+
+if(windowWidth mod 800 != 0 || windowHeight mod 608 != 0){
+    var aspectRatio = windowWidth / windowHeight;
+    var aspectRatioRatio = aspectRatio / (800/608);
+    
+    texture_set_interpolation(true);
+    shader_set(sh_pxUpscale);
+    
+    if(aspectRatioRatio &lt; 1){
+        var canvasHeight = windowWidth*608/800;
+        var vertOutPixels = (windowHeight - canvasHeight) / 2;
+        shader_set_uniform_f(u_texelsPerPixel, 800./windowWidth, 608./canvasHeight);
+        draw_surface_stretched(application_surface, 0, vertOutPixels, windowWidth, canvasHeight);
+    }
+    else{
+        var canvasWidth = windowHeight*800/608;
+        var horOutPixels = (windowWidth - canvasWidth) / 2;
+        shader_set_uniform_f(u_texelsPerPixel, 800./canvasWidth, 608./windowHeight);
+        draw_surface_stretched(application_surface, horOutPixels, 0, canvasWidth, windowHeight);
+    }
+    
+    shader_reset();
+    texture_set_interpolation(false);
+}
+else{
+    draw_surface_stretched(application_surface,0,0,windowWidth,windowHeight);
+}
+
+draw_enable_alphablend(true);
 </string>
           </argument>
         </arguments>
@@ -547,7 +608,9 @@ room_goto_next();
             <kind>1</kind>
             <string>///Smoothing mode fix
 //Draw the final application surface at the desired smoothing.
-texture_set_interpolation(global.smoothingMode);
+// texture_set_interpolation(global.smoothingMode);
+// px upscaler
+application_surface_draw_enable(false);
 </string>
           </argument>
         </arguments>
