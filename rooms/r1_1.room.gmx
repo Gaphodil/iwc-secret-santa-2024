@@ -100,7 +100,7 @@
     <instance objName="objBlockDing" x="832" y="384" name="inst_3CB7AB52" locked="0" code="y += 608;&#xA;with (make_trigger(&quot;1_left_screentrans&quot;)) {&#xA;    trg_move_to(x,y-608,608);&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlockDing" x="832" y="416" name="inst_C91061D4" locked="0" code="y += 608;&#xA;with (make_trigger(&quot;1_left_screentrans&quot;)) {&#xA;    trg_move_to(x,y-608,608);&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlockDing" x="832" y="448" name="inst_F36CC31D" locked="0" code="y += 608;&#xA;with (make_trigger(&quot;1_left_screentrans&quot;)) {&#xA;    trg_move_to(x,y-608,608);&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objOutsideRoomChanger" x="544" y="608" name="inst_28248711" locked="0" code="roomTo = rFallingTrap;&#xA;" scaleX="9" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objOutsideRoomChanger" x="256" y="608" name="inst_28248711" locked="0" code="roomTo = rFallingTrap;&#xA;" scaleX="18" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bDarkTiles" x="1056" y="480" w="32" h="32" xo="32" yo="0" id="10003344" name="inst_7B8A19BC" depth="1000001" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
