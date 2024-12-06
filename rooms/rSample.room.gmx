@@ -465,7 +465,6 @@
     <instance objName="objBlock" x="960" y="128" name="inst_12AD1C12" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="960" y="96" name="inst_07A7B228" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="960" y="80" name="inst_D7897A0F" locked="0" code="" scaleX="1" scaleY="0.5" colour="4294967295" rotation="0"/>
-    <instance objName="objWarp" x="992" y="576" name="inst_6E10F91E" locked="0" code="roomTo = rCherryBoss;&#xA;autosave = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objGravityUp" x="1152" y="160" name="inst_03BEA19F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objGravityUp" x="1184" y="160" name="inst_8256C7FB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objGravityUp" x="1216" y="160" name="inst_356A84BF" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -585,7 +584,6 @@
     <instance objName="objBlock" x="1024" y="192" name="inst_2A4AA608" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="1024" y="224" name="inst_E088E6C7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeDown" x="1024" y="256" name="inst_D38B7879" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objWarp" x="1024" y="64" name="inst_79951C93" locked="0" code="roomTo = rMiku;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeDown" x="1312" y="160" name="inst_B55E08D8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objTrigger" x="1312" y="160" name="inst_0430D30B" locked="0" code="trg = &quot;fruit&quot;;&#xA;" scaleX="1" scaleY="3" colour="4294967295" rotation="0"/>
     <instance objName="objCherry" x="1296" y="144" name="inst_234DF4AD" locked="0" code="with(make_trigger(&quot;fruit&quot;))&#xA;{&#xA;    trg_move(0, 5); &#xA;    trg_sound(sndCherry, 1);&#xA;}&#xA;depth = 1100000;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -599,7 +597,6 @@
     <instance objName="objSlopeUpRight" x="1472" y="32" name="inst_1AC5647E" locked="0" code="visible = true;&#xA;" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="objSlopeUpLeft" x="1456" y="32" name="inst_B58F3B3A" locked="0" code="visible = true;&#xA;" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
     <instance objName="objSlopeUpRight" x="1440" y="32" name="inst_A3336032" locked="0" code="visible = true;&#xA;" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>
-    <instance objName="objWarp" x="576" y="32" name="inst_E372D5D3" locked="0" code="roomTo = rTest;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objTrigger" x="352" y="544" name="inst_8377030F" locked="0" code="trg = &quot;m9 2&quot;;&#xA;key = &quot;m9 1&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlockInvis" x="224" y="544" name="inst_C9A77E37" locked="0" code="with(make_trigger(&quot;m9 2&quot;))&#xA;{&#xA;    trg_fade(&quot;in&quot;, 1);&#xA;}" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objTrigger" x="241" y="544" name="inst_13DA56BC" locked="0" code="trg = &quot;m9 3&quot;;&#xA;key = &quot;m9 2&quot;;&#xA;" scaleX="0.5" scaleY="0.5" colour="4294967295" rotation="0"/>

@@ -10,13 +10,7 @@ switch (room)
     case rDifficultySelect:
     case rSample:                                                                                                            
         return "GuyRock";
-        
-    case rCherryBoss:
-        return "Megaman";
-        
-    case rMiku:
-        return -2;          //Don't change the music in any way (the Miku object plays it)
-        
+
     case rEnd:
     default:
         return -1;          //Play nothing
