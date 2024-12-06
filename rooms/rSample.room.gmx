@@ -252,7 +252,7 @@
     <instance objName="objSpikeUp" x="704" y="544" name="inst_81726A50" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeUp" x="736" y="544" name="inst_EB5CD0AA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeUp" x="576" y="544" name="inst_321A706C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objPlatform" x="640" y="480" name="inst_4C08BA95" locked="0" code="hspeed = 3;&#xA;snap = false;&#xA;with(make_trigger(&quot;fadePlatforms&quot;))&#xA;{&#xA;    fadeType = &quot;out&quot;;&#xA;    fadeTime = 50;&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPlatform" x="640" y="480" name="inst_4C08BA95" locked="0" code="hspeed = 3;&#xA;snap = false;&#xA;with(make_trigger(&quot;fadePlatforms&quot;))&#xA;{&#xA;    fadeType = &quot;out&quot;;&#xA;    fadeTime = 50;&#xA;}" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="640" y="448" name="inst_19DD76E2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPlatformTouch" x="704" y="352" name="inst_A0EA618E" locked="0" code="v = 2;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objCherryBounce" x="720" y="400" name="inst_DBDF271E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -363,9 +363,9 @@
     <instance objName="objJumpRefresher" x="640" y="176" name="inst_894E7073" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeUp" x="608" y="224" name="inst_221A4A3F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeUp" x="640" y="224" name="inst_D0C437CE" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objTriggerButtonR" x="736" y="480" name="inst_7004401C" locked="0" code="trg = &quot;fadePlatforms&quot;;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objTriggerButtonR" x="736" y="480" name="inst_7004401C" locked="0" code="trg = &quot;fadePlatforms&quot;;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSign" x="368" y="448" name="inst_5F7CED3C" locked="0" code="text = &quot;hello!&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objPlatform" x="640" y="512" name="inst_FF324756" locked="0" code="hspeed = 3;&#xA;snap = false;&#xA;with(make_trigger(&quot;fadePlatforms&quot;))&#xA;{&#xA;    fadeType = &quot;out&quot;;&#xA;    fadeTime = 50;&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objPlatform" x="640" y="512" name="inst_FF324756" locked="0" code="hspeed = 3;&#xA;snap = false;&#xA;with(make_trigger(&quot;fadePlatforms&quot;))&#xA;{&#xA;    fadeType = &quot;out&quot;;&#xA;    fadeTime = 50;&#xA;}" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objPlatform" x="640" y="544" name="inst_C6BD72A2" locked="0" code="hspeed = 3;&#xA;snap = false;&#xA;with(make_trigger(&quot;fadePlatforms&quot;))&#xA;{&#xA;    fadeType = &quot;out&quot;;&#xA;    fadeTime = 50;&#xA;}&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSaveMedium" x="768" y="224" name="inst_B5404CEC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSaveFlip" x="1408" y="512" name="inst_A7B558FD" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
