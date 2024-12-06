@@ -25,11 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (instance_number(object_index) &gt; 1) {
-    instance_destroy();
-}
-
-obj = objCherry;
+            <string>// DO NOT place in room - add to gameStart code in objWorld
+objs = Array(objCherry);
 old_only = false;
 sprite_index = sprCherry;
 image_speed = 1/15;
@@ -55,11 +52,15 @@ image_speed = 1/15;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with (obj) {
-    if (not other.old_only
-        or variable_instance_exists(id, "old"))
-    {
-        image_index = other.image_index;
+            <string>var i;
+for (i = 0; i &lt; array_length_1d(objs); i++) {
+    var obj = objs[i];
+    with (obj) {
+        if (not other.old_only
+            or variable_instance_exists(id, "old"))
+        {
+            image_index = other.image_index;
+        }
     }
 }
 

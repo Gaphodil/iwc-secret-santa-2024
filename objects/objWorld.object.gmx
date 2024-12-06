@@ -30,6 +30,7 @@
 
 if (instance_number(object_index) &gt; 1)
 {
+    print("destroying World");
     instance_destroy();
 }
 </string>
@@ -519,8 +520,16 @@ if (global.checkForUpdates)
 volumeTimer = 0;
 volumeDelay = 10;
 
-// create an animSyncer for cherries
-instance_create(-32, -32, objAnimSyncer);
+// create animSyncers
+animSyncCherry = instance_create(0,0,objAnimSyncer);
+animSyncSpike  = instance_create(0,0,objAnimSyncer);
+with (animSyncSpike) {
+    objs = Array(objSpikeUp, objSpikeLeft, objSpikeRight, objSpikeDown);
+    sprite_index = sprSpikeUp;
+    image_speed = 0.5;
+}
+// create sound stopper
+soundStopper = instance_create(0,0,objSoundStopper);
 
 // create px upscaler
 u_texelsPerPixel = shader_get_uniform(sh_pxUpscale,"u_texelsPerPixel");

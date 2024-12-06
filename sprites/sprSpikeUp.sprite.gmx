@@ -21,5 +21,41 @@
   <height>32</height>
   <frames>
     <frame index="0">images\sprSpikeUp_0.png</frame>
+    <frame index="1">images\sprSpikeUp_1.png</frame>
+    <frame index="2">images\sprSpikeUp_2.png</frame>
+    <frame index="3">images\sprSpikeUp_3.png</frame>
+    <frame index="4">images\sprSpikeUp_4.png</frame>
+    <frame index="5">images\sprSpikeUp_5.png</frame>
+    <frame index="6">images\sprSpikeUp_6.png</frame>
+    <frame index="7">images\sprSpikeUp_7.png</frame>
+    <frame index="8">images\sprSpikeUp_8.png</frame>
+    <frame index="9">images\sprSpikeUp_9.png</frame>
+    <frame index="10">images\sprSpikeUp_10.png</frame>
+    <frame index="11">images\sprSpikeUp_11.png</frame>
+    <frame index="12">images\sprSpikeUp_12.png</frame>
+    <frame index="13">images\sprSpikeUp_13.png</frame>
+    <frame index="14">images\sprSpikeUp_14.png</frame>
+    <frame index="15">images\sprSpikeUp_15.png</frame>
+    <frame index="16">images\sprSpikeUp_16.png</frame>
+    <frame index="17">images\sprSpikeUp_17.png</frame>
+    <frame index="18">images\sprSpikeUp_18.png</frame>
+    <frame index="19">images\sprSpikeUp_19.png</frame>
+    <frame index="20">images\sprSpikeUp_20.png</frame>
+    <frame index="21">images\sprSpikeUp_21.png</frame>
+    <frame index="22">images\sprSpikeUp_22.png</frame>
+    <frame index="23">images\sprSpikeUp_23.png</frame>
+    <frame index="24">images\sprSpikeUp_24.png</frame>
+    <frame index="25">images\sprSpikeUp_25.png</frame>
+    <frame index="26">images\sprSpikeUp_26.png</frame>
+    <frame index="27">images\sprSpikeUp_27.png</frame>
+    <frame index="28">images\sprSpikeUp_28.png</frame>
+    <frame index="29">images\sprSpikeUp_29.png</frame>
+    <frame index="30">images\sprSpikeUp_30.png</frame>
+    <frame index="31">images\sprSpikeUp_31.png</frame>
+    <frame index="32">images\sprSpikeUp_32.png</frame>
+    <frame index="33">images\sprSpikeUp_33.png</frame>
+    <frame index="34">images\sprSpikeUp_34.png</frame>
+    <frame index="35">images\sprSpikeUp_35.png</frame>
+    <frame index="36">images\sprSpikeUp_36.png</frame>
   </frames>
 </sprite>

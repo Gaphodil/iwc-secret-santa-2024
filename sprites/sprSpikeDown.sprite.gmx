@@ -21,5 +21,41 @@
   <height>32</height>
   <frames>
     <frame index="0">images\sprSpikeDown_0.png</frame>
+    <frame index="1">images\sprSpikeDown_1.png</frame>
+    <frame index="2">images\sprSpikeDown_2.png</frame>
+    <frame index="3">images\sprSpikeDown_3.png</frame>
+    <frame index="4">images\sprSpikeDown_4.png</frame>
+    <frame index="5">images\sprSpikeDown_5.png</frame>
+    <frame index="6">images\sprSpikeDown_6.png</frame>
+    <frame index="7">images\sprSpikeDown_7.png</frame>
+    <frame index="8">images\sprSpikeDown_8.png</frame>
+    <frame index="9">images\sprSpikeDown_9.png</frame>
+    <frame index="10">images\sprSpikeDown_10.png</frame>
+    <frame index="11">images\sprSpikeDown_11.png</frame>
+    <frame index="12">images\sprSpikeDown_12.png</frame>
+    <frame index="13">images\sprSpikeDown_13.png</frame>
+    <frame index="14">images\sprSpikeDown_14.png</frame>
+    <frame index="15">images\sprSpikeDown_15.png</frame>
+    <frame index="16">images\sprSpikeDown_16.png</frame>
+    <frame index="17">images\sprSpikeDown_17.png</frame>
+    <frame index="18">images\sprSpikeDown_18.png</frame>
+    <frame index="19">images\sprSpikeDown_19.png</frame>
+    <frame index="20">images\sprSpikeDown_20.png</frame>
+    <frame index="21">images\sprSpikeDown_21.png</frame>
+    <frame index="22">images\sprSpikeDown_22.png</frame>
+    <frame index="23">images\sprSpikeDown_23.png</frame>
+    <frame index="24">images\sprSpikeDown_24.png</frame>
+    <frame index="25">images\sprSpikeDown_25.png</frame>
+    <frame index="26">images\sprSpikeDown_26.png</frame>
+    <frame index="27">images\sprSpikeDown_27.png</frame>
+    <frame index="28">images\sprSpikeDown_28.png</frame>
+    <frame index="29">images\sprSpikeDown_29.png</frame>
+    <frame index="30">images\sprSpikeDown_30.png</frame>
+    <frame index="31">images\sprSpikeDown_31.png</frame>
+    <frame index="32">images\sprSpikeDown_32.png</frame>
+    <frame index="33">images\sprSpikeDown_33.png</frame>
+    <frame index="34">images\sprSpikeDown_34.png</frame>
+    <frame index="35">images\sprSpikeDown_35.png</frame>
+    <frame index="36">images\sprSpikeDown_36.png</frame>
   </frames>
 </sprite>
