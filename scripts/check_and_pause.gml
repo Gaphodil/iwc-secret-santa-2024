@@ -55,6 +55,8 @@ if (global.pauseDelay <= 0)    //Check if pause delay is active
             config_save();    //Save config in case volume levels were changed
             
             io_clear();    //Clear input states to prevent possible pause strats/exploits
+
+            noUpscaleTimer = 2; // fix the upscaler
         }
     }
 }

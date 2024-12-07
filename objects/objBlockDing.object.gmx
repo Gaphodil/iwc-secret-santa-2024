@@ -76,8 +76,10 @@ dinging = false;
 {
     var dingPlaying = audio_is_playing(sndDing) or dinging;
     var newSnd = audio_play_sound(sndDing, 0, false);
-    if (dingPlaying) audio_sound_gain(newSnd, 0.5, 0);
-    else with (objBlockDing) event_user(0);
+    if (dingPlaying)
+        audio_sound_gain(newSnd, 0.5, 0);
+    else
+        with (objBlockDing) event_user(0);
     print(audio_sound_get_gain(newSnd));
     visible = true;
 }
