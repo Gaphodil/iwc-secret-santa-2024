@@ -27,18 +27,7 @@
             <kind>1</kind>
             <string>spikeSnd = -1;
 skidSnd = -1;
-// duplicate sprite
-if (not variable_global_exists("centeredSpikeUp"))
-{
-    var newSprite = sprite_duplicate(sprSpikeUp);
-    sprite_set_offset(newSprite, 16, 16);
-    sprite_collision_mask(
-        newSprite, false, 0,
-        0, 0, 32, 32,
-        0, 0
-    );
-    global.centeredSpikeUp = newSprite;
-}
+init_centered_spike();
 sprite_index = global.centeredSpikeUp;
 mask_index = sprite_index;
 x += 16;
