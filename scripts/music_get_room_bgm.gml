@@ -10,7 +10,9 @@ switch (room)
     case rDifficultySelect:
     case rSample:                                                                                                            
         return "GuyRock";
-
+    case r1_1:
+    case rFallingTrap:
+        return "GuyRock";
     case rEnd:
     default:
         return -1;          //Play nothing

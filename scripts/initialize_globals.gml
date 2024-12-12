@@ -24,6 +24,7 @@ global.trigger = ds_map_create();
 
 global.gameStarted = false;     //Determines whether the game is in progress (enables saving, restarting, etc.)
 global.noPause = false;         //Used to prevent pausing, for example in bossfights
+global.noRestart = false;
 global.autosave = false;        //Used to autosave the next time the player is created
 global.noDeath = false;
 global.infJump = false;

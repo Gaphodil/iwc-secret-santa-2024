@@ -133,7 +133,20 @@ kill = false;
     image_angle = 640
     alpha = 0.35
 }
-if (not init) init = true;
+if (not init) {
+    // set nopause, norestart - unless kill + seen before
+    global.noPause = true;
+    global.noRestart = true;
+
+    if (kill) {
+        audio_pause_sound(global.currentMusic);
+        if (not variable_global_exists("fallingKilled")) {
+            global.fallingKilled = true;
+        }
+        else event_user(15);
+    }
+    init = true;
+}
 </string>
           </argument>
         </arguments>
@@ -165,9 +178,9 @@ alpha = clamp(alpha+d_alpha, min_alpha, max_alpha);
 
 if (image_xscale == min_scale and not reversed)
 {
-    // instance_create(400,304,objGameOver);
     instance_destroy();
     // print_list(x, y, hspeed, vspeed, image_angle, alpha);
+    event_user(15);
     if (kill) {
         audio_play_sound(sndDeath, 0, false);
         instance_create(400,304,objGameOver);
@@ -180,8 +193,34 @@ if (image_xscale == min_scale and not reversed)
 else if (image_xscale == max_scale and reversed)
 {
     instance_destroy();
+    event_user(15);
     room_goto(r1_1);
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="25">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///reset nopause, norestart
+global.noPause = false;
+global.noRestart = false;
 </string>
           </argument>
         </arguments>

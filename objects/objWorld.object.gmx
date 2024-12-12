@@ -119,7 +119,7 @@ if (global.gameStarted)
     
     if (!global.gamePaused)
     {
-        if (input_check_pressed(KEY.RESTART))
+        if (input_check_pressed(KEY.RESTART) and not global.noRestart)
         {
             //Stop death sound/music
             audio_stop_sound(global.deathSound);
@@ -187,7 +187,7 @@ if (global.gameStarted)
 }
 else if (room == rDifficultySelect)    //Special case for restarting in difficulty select
 {
-    if (input_check_pressed(KEY.RESTART))
+    if (input_check_pressed(KEY.RESTART) and not global.noRestart)
     {
         //Stop death sound/music
         audio_stop_sound(global.deathSound);
