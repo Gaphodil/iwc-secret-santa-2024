@@ -1,4 +1,4 @@
-///opt_volume(type)
+///opt_musicvolume(type)
 
 switch(argument0)
 {
@@ -7,11 +7,11 @@ switch(argument0)
     
     case "inPause":
         //Whether or not to include this option on the pause screen
-        return true;
+        return false;
         
     case "init":
-        volumeTimer = 0;
-        volumeDelay = 10;
+        musVolumeTimer = 0;
+        musVolumeDelay = 10;
         break;
         
     case "step":
@@ -20,24 +20,24 @@ switch(argument0)
         var h = input_check(KEY.MENU_RIGHT) - input_check(KEY.MENU_LEFT);
         if (hPress != 0)
         {
-            global.volumeLevel += hPress;
-            volumeTimer = volumeDelay;
+            global.musVolumeLevel += hPress;
+            musVolumeTimer = musVolumeDelay;
         }
         if (h != 0)
         {
-            if (volumeTimer <= 0)
+            if (musVolumeTimer <= 0)
             {
-                global.volumeLevel += h;
+                global.musVolumeLevel += h;
             }
-            volumeTimer--;
+            musVolumeTimer--;
         }
-        global.volumeLevel = clamp(global.volumeLevel, 0, 100);
-        audio_master_gain(global.volumeLevel/100);
+        global.musVolumeLevel = clamp(global.musVolumeLevel, 0, 100);
+        music_gain(global.musVolumeLevel/100);
         break;
         
     case "name":
-        return "Global Volume";
+        return "Music Volume";
         
     case "value":
-        return string(global.volumeLevel) + "%";
+        return string(global.musVolumeLevel) + "%";
 }

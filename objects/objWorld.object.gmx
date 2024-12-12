@@ -548,6 +548,8 @@ if (global.checkForUpdates)
 
 volumeTimer = 0;
 volumeDelay = 10;
+musVolumeTimer = 0;
+musVolumeDelay = 10;
 
 gameSpeed = 50;
 roomSpeed = gameSpeed;
