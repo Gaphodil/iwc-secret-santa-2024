@@ -1,7 +1,8 @@
 /// init_centered_spike
 
 // duplicate sprite
-if (not variable_global_exists("centeredSpikeUp"))
+if (not variable_global_exists("centeredSpikeUp")
+    or global.centeredSpikeUp == -1)
 {
     var newSprite = sprite_duplicate(sprSpikeUp);
     sprite_set_offset(newSprite, 16, 16);

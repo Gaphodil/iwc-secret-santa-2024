@@ -509,8 +509,11 @@ noUpscaleTimer = 2;
           <argument>
             <kind>1</kind>
             <string>///free memory
-if (variable_global_exists("centeredSpikeUp")) {
+if (variable_global_exists("centeredSpikeUp")
+    and global.centeredSpikeUp != -1)
+{
     sprite_delete(global.centeredSpikeUp);
+    global.centeredSpikeUp = -1;
 }
 </string>
           </argument>
