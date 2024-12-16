@@ -72,13 +72,11 @@ sndChanging = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var sndPlaying = audio_is_playing(sndBlockChange) or sndChanging;
-var newSnd = audio_play_sound(sndBlockChange, 0, false);
-if (sndPlaying)
+            <string>var newSnd = play_sound(sndBlockChange);
+if (sndChanging)
     audio_sound_gain(newSnd, 0.5, 0);
-else
+else if (not audio_is_playing(sndBlockChange))
     with (objVerveBlockFake) event_user(0);
-print(audio_sound_get_gain(newSnd));
 instance_destroy();
 </string>
           </argument>

@@ -2,7 +2,7 @@
 //Plays a sound when triggered
 //Arguments:
 //1. sound
-//2. [volume] - 1 by default.
+//2. [volume] - undefined by default.
 
 if (!global.makingTrigger)
 {
@@ -10,7 +10,7 @@ if (!global.makingTrigger)
     {
         case "define":
             sound = noone;
-            volume = 1;
+            volume = undefined;
             break;
             
         case "exclusive":
@@ -20,8 +20,7 @@ if (!global.makingTrigger)
             return (sound != noone);
             
         case "init":
-            var snd = audio_play_sound(sound, 0, false);
-            audio_sound_gain(snd, volume, 0);
+            var snd = play_sound(sound, volume);
             break;
     }
 }

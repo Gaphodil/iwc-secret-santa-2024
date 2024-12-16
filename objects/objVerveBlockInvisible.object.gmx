@@ -83,7 +83,7 @@ block = noone;
 
 if !visible if collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, bbox_bottom + 1, objPlayer, false, false) {
     visible = true;
-    audio_play_sound(sndBlockChange, 0, false);
+    play_sound(sndBlockChange);
 }
 </string>
           </argument>
@@ -107,7 +107,7 @@ if !visible if collision_rectangle(bbox_left - 1, bbox_top - 1, bbox_right + 1, 
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>audio_play_sound(sndBlockChange, 0, false);
+            <string>play_sound(sndBlockChange);
 instance_destroy();
 </string>
           </argument>
