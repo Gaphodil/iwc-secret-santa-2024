@@ -22,7 +22,10 @@ if (global.pauseDelay <= 0)    //Check if pause delay is active
                 }
                 
                 instance_deactivate_all(true);
+                // reactivate important objects
                 instance_activate_object(objPlayMusic); //If objPlayMusic sets the current music, we need to find it if we turn on music in the pause options.
+                instance_activate_object(objDrawHandler);
+                instance_activate_object(objSoundStopper);
                 
                 global.pauseSurf = surface_create(surface_get_width(application_surface), surface_get_height(application_surface));
                 surface_copy(global.pauseSurf, 0, 0, application_surface);
@@ -56,7 +59,7 @@ if (global.pauseDelay <= 0)    //Check if pause delay is active
             
             io_clear();    //Clear input states to prevent possible pause strats/exploits
 
-            noUpscaleTimer = 2; // fix the upscaler
+            with (drawHandler) noUpscaleTimer = 1; // fix the upscaler
         }
     }
 }
