@@ -34,6 +34,8 @@
 u_texelsPerPixel = shader_get_uniform(sh_pxUpscale,"u_texelsPerPixel");
 // fix upscaler on roomstart and unpause
 noUpscaleTimer = 0;
+
+active = true;
 </string>
           </argument>
         </arguments>
@@ -57,7 +59,7 @@ noUpscaleTimer = 0;
           <argument>
             <kind>1</kind>
             <string>///px upscaler
-if (noUpscaleTimer &gt; 0) exit;
+if (not active or noUpscaleTimer &gt; 0) exit;
 var windowWidth = window_get_width();
 var windowHeight = window_get_height();
 
@@ -119,12 +121,12 @@ draw_enable_alphablend(true);
 //Draw the final application surface at the desired smoothing.
 // texture_set_interpolation(global.smoothingMode);
 // px upscaler
-if (noUpscaleTimer &gt; 0) {
+if (not active or noUpscaleTimer &lt;= 0)
+    application_surface_draw_enable(false);
+else if (noUpscaleTimer &gt; 0) {
     noUpscaleTimer--;
     application_surface_draw_enable(true);
 }
-else
-    application_surface_draw_enable(false);
 </string>
           </argument>
         </arguments>

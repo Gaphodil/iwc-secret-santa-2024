@@ -2,7 +2,7 @@
 <object>
   <spriteName>sprCamera</spriteName>
   <solid>0</solid>
-  <visible>0</visible>
+  <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -38,7 +38,10 @@ flipping = false;
 half_point = 25;
 dir = 1;
 
-xview_base = -1;
+surf_xpos = -1;
+surf_width = -1;
+windowWidth = window_get_width();
+windowHeight = window_get_height();
 </string>
           </argument>
         </arguments>
@@ -66,9 +69,14 @@ xview_base = -1;
 }
 
 if (flipping and (dir &gt; 0 or e_t &gt; 0)) {
+    // ease timer
     e_t += dir;
-    view_xview[0] = xview_base + EaseInCubic(e_t, 0, 400, half_point);
-    view_wview[0] = EaseInCubic(e_t, 800, 0, half_point);
+    // change x, width by easing
+    surf_xpos = EaseInCubic(e_t, 0, 400, half_point);
+    surf_width = EaseInCubic(e_t, 800, 0, half_point);
+    // update window size in case changed
+    windowWidth = window_get_width();
+    windowHeight = window_get_height();
     if (e_t == half_point) dir *= -1;
     if (dir == -1 and e_t == 0) {
         flipping = false;
@@ -76,6 +84,81 @@ if (flipping and (dir &gt; 0 or e_t &gt; 0)) {
     }
 }
 
+with (objDrawHandler) active = not other.flipping;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="76">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (flipping) {
+    // pulled from pxupscale draw code
+    var baseWidth = windowWidth;
+    var baseHeight = windowHeight;
+    var baseX = 0;
+    var baseY = 0;
+
+    var aspectRatio = windowWidth / windowHeight;
+    var aspectRatioRatio = aspectRatio / (800/608);
+    // taller
+    if (aspectRatioRatio &lt; 1) {
+        baseHeight = windowWidth*608/800;
+        baseY = (windowHeight - baseHeight) / 2;
+    }
+    // wider
+    else if (aspectRatioRatio &gt; 1) {
+        baseWidth = windowHeight*800/608;
+        baseX = (windowWidth - baseWidth) / 2;
+    }
+
+    draw_surface_stretched(
+        application_surface,
+        baseX + surf_xpos * (baseWidth / 800),
+        baseY,
+        surf_width * (baseWidth / 800),
+        baseHeight
+    );
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>// do nothing
 </string>
           </argument>
         </arguments>
