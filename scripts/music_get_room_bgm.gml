@@ -9,11 +9,12 @@ switch (room)
     case rOptions:
     case rDifficultySelect:
     case rSample:                                                                                                            
-        return "GuyRock";
+        return "musHoliday1";
     case r1_1:
     case rFallingTrap:
-        return "GuyRock";
+        return "musPeaks" + string(global.musicChoice);
     case rEnd:
+        return "musHoliday2";
     default:
         return -1;          //Play nothing
 }
