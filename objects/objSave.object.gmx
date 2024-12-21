@@ -139,7 +139,7 @@ if (input_check_pressed(KEY.SHOOT))  //save if player is touching the save and s
             <kind>1</kind>
             <string>///Save the game
 
-if (canSave &amp;&amp; instance_exists(objPlayer) &amp;&amp; global.grav == grav)
+if (canSave &amp;&amp; instance_exists(objPlayer) &amp;&amp; global.grav == grav &amp;&amp; image_alpha &gt;= 1)
 {
     if (!((objPlayer.x &lt; 0 || objPlayer.x &gt; room_width || objPlayer.y &lt; 0 || objPlayer.y &gt; room_height) &amp;&amp; global.edgeDeath))  //make sure the player isn't saving outside the room to prevent save locking
     {
