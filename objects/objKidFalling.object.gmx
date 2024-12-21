@@ -48,6 +48,8 @@ alpha = 0;
 reversed = false;
 init = false;
 kill = false;
+
+draw_bow = global.difficulty == 0;
 </string>
           </argument>
         </arguments>
@@ -268,6 +270,8 @@ audio_stop_sound(sndKirbyRising);
           <argument>
             <kind>1</kind>
             <string>draw_self();
+if (draw_bow)
+    draw_sprite_ext(sprBow,image_index,x,y,image_xscale,image_yscale,image_angle,c_white,image_alpha);
 draw_sprite_ext(sprPlayerFall_Dark,image_index,x,y,image_xscale,image_yscale,image_angle,c_black,alpha);
 </string>
           </argument>
