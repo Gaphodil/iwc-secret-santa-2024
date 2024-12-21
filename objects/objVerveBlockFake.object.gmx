@@ -27,6 +27,7 @@
             <kind>1</kind>
             <string>event_inherited();
 sndChanging = false;
+active = true;
 </string>
           </argument>
         </arguments>
@@ -72,7 +73,8 @@ sndChanging = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>var newSnd = play_sound(sndBlockChange);
+            <string>if (not active) exit;
+var newSnd = play_sound(sndBlockChange);
 if (sndChanging)
     audio_sound_gain(newSnd, 0.5, 0);
 else if (not audio_is_playing(sndBlockChange))
