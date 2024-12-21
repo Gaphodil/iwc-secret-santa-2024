@@ -2,7 +2,7 @@
 <object>
   <spriteName>sprCamera</spriteName>
   <solid>0</solid>
-  <visible>-1</visible>
+  <visible>0</visible>
   <depth>0</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
@@ -30,23 +30,17 @@
     exit;
 }
 
-active = false;
+tile_depth = 1000000;
 
-e_t = 0;
-flipping = false;
-half_point = 25;
-dir = 1;
-
-surf_xpos = -1;
-surf_width = -1;
-windowWidth = window_get_width();
-windowHeight = window_get_height();
+locking = false;
+lock_x = -1;
+lock_y = -1;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="1" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -63,13 +57,23 @@ windowHeight = window_get_height();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>with (objDrawHandler) active = true;
+            <string>///keep player locked
+if (locking) with (objPlayer) {
+    x = other.lock_x;
+    y = other.lock_y;
+    vspeed = 0;
+}
+
+// allow restart once player dies
+if (instance_exists(objGameOver) and global.noRestart) {
+    event_user(15);
+}
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="7" enumb="25">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -86,37 +90,156 @@ windowHeight = window_get_height();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (global.debugMode and keyboard_check_pressed(ord("F"))) {
-    flipping = true;
+            <string>///reset nopause, norestart
+global.noPause = false;
+global.noRestart = false;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="13">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///begin ending sequence
+// replace kid with funny kid look down
+var pmtk = instance_create(lock_x, lock_y, objPMTrapKid);
+with (objPlayer) visible = false;
+with (objBow) visible = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///warp to trap room
+// be on the flip side, reset depth
+lock_x = 800 - lock_x;
+with (objPlayer) {
+    xScale *= -1;
+    depth = -10;
+}
+with (objBow) {
+    depth = -11;
+}
+room_goto(rPaperTrap);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///lock player position, trigger flip
+with(objPlayer) {
+    frozen = true;
+    other.lock_x = x
+    other.lock_y = y
+}
+locking = true;
+// spawn and activate flipper
+var vf = instance_create(x,y,objViewFlipper);
+with (vf) flipping = true;
+// play the sound
+play_sound(sndPaperFlip);
+
+// set nopause, norestart unless seen before
+global.noPause = true;
+global.noRestart = true;
+
+if (not variable_global_exists("pmKilled")) {
+    global.pmKilled = true;
+}
+else event_user(15);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="10">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///begin fall, depth change
+// allowing the fall:
+// make all fake blocks active=false
+with (objBlockFake) active=false;
+with (objVerveBlockFake) active=false;
+// remove all blocks below player
+with (objBlock) {
+    if (y &gt; other.y) instance_destroy();
+}
+// remove all triggers except for the position freezer
+with (objTrigger) {
+    if (key == "2_jumpedover") {
+        x = 0;
+        image_xscale = 800 div 32;
+    }
+    else instance_destroy();
 }
 
-if (flipping and (dir &gt; 0 or e_t &gt; 0)) {
-    // ease timer
-    e_t += dir;
-    // change x, width by easing
-    surf_xpos = EaseInCubic(e_t, 0, 400, half_point);
-    surf_width = EaseInCubic(e_t, 800, 0, half_point);
-    // update window size in case changed
-    windowWidth = window_get_width();
-    windowHeight = window_get_height();
-    if (e_t == half_point) {
-        dir *= -1;
-        // trigger room_goto in manager
-        with (objViewFlipTrapManager) {
-            event_user(2);
-        }
-    }
-    if (dir == -1 and e_t == 0) {
-        flipping = false;
-        dir = 1;
-        // trigger funny anim
-        with (objViewFlipTrapManager) {
-            event_user(3);
-        }
-    }
-}
-
-with (objDrawHandler) active = not other.flipping;
+// visuals:
+with (objPlayer) depth = other.tile_depth + 1000;
+with (objBow) depth = other.tile_depth + 1000 - 1;
 </string>
           </argument>
         </arguments>
@@ -139,81 +262,14 @@ with (objDrawHandler) active = not other.flipping;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (room != rPaperTrap) instance_destroy();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="76">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (flipping) {
-    // pulled from pxupscale draw code
-    var baseWidth = windowWidth;
-    var baseHeight = windowHeight;
-    var baseX = 0;
-    var baseY = 0;
-
-    var aspectRatio = windowWidth / windowHeight;
-    var aspectRatioRatio = aspectRatio / (800/608);
-    // taller
-    if (aspectRatioRatio &lt; 1) {
-        baseHeight = windowWidth*608/800;
-        baseY = (windowHeight - baseHeight) / 2;
-    }
-    // wider
-    else if (aspectRatioRatio &gt; 1) {
-        baseWidth = windowHeight*800/608;
-        baseX = (windowWidth - baseWidth) / 2;
-    }
-
-    draw_surface_stretched(
-        application_surface,
-        baseX + surf_xpos * (baseWidth / 800),
-        baseY,
-        surf_width * (baseWidth / 800),
-        baseHeight
-    );
+            <string>if (room == rPaperTrap) 
+    global.edgeDeath = true;
+else {
+    global.edgeDeath = false;
+    locking = false;
+    lock_x = -1;
+    lock_y = -1;
 }
-
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>// do nothing
 </string>
           </argument>
         </arguments>

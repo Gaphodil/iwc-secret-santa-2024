@@ -159,7 +159,8 @@ else
 var killer = instance_place(x, y, objPlayerKiller)
 if (killer != noone)
 {
-    player_kill();
+    // jank depth addition
+    if (depth &lt; 1000000) player_kill();
 }
 </string>
           </argument>

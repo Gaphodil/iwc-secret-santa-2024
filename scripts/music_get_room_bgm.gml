@@ -12,6 +12,7 @@ switch (room)
         return "musHoliday1";
     case r1_1:
     case rFallingTrap:
+    case rPaperTrap:
         return "musPeaks" + string(global.musicChoice);
     case rEnd:
         return "musHoliday2";

@@ -128,7 +128,7 @@ else alarm[0] = 1;
           <argument>
             <kind>1</kind>
             <string>///go up and play snd
-vspeed = -5;
+vspeed = -15;
 spikeSnd = audio_play_sound(sndCherry,0,false);
 
 </string>
