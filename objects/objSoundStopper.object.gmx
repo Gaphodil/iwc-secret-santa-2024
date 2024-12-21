@@ -147,7 +147,9 @@ if (not is_undefined(toChange)) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// manual set probably still best for configurability
+            <string>// exception for flip
+if (room == rPaperTrap) exit;
+// manual set probably still best for configurability
 var i;
 for (i = 0; i &lt; ds_list_size(sndIds); i++) {
     audio_stop_sound(sndIds[| i]);
