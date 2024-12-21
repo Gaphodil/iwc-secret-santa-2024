@@ -98,7 +98,7 @@ else alarm[0] = 1;
         // cleanup
         vspeed = 0;
         audio_stop_sound(spikeSnd);
-        play_sound(sndGlass);
+        play_sound(sndPaperClang);
         // prep
         y_top = y;
         alarm[0] = 1;

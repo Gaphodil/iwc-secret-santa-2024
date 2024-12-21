@@ -38,7 +38,10 @@ sndIds = List(
     sndBlockChange, sndBossHit, sndCherry,
     sndGlass, sndSpikeTrap,
     sndKirbyFalling, sndKirbyRising,
-    sndDing, sndTimber, sndSkid
+    sndDing, sndTimber, sndSkid,
+    sndExplosion, sndPaperClang,
+    sndPaperFlip, sndPaperPanic,
+    sndPipe, sndSpring
 );
 toChange = undefined;
 </string>

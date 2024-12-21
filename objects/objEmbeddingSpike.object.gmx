@@ -38,6 +38,12 @@ t = 0;
 bounce_len = 50;
 
 depth = tile_layer+1;
+
+// part 2
+
+landSnd = -1;
+landed = false;
+exploded = false;
 </string>
           </argument>
         </arguments>
@@ -65,8 +71,15 @@ depth = tile_layer+1;
 y = EaseOutBounce(t,y_top,y_bot,bounce_len);
 if (t &gt;= bounce_len) {
     alarm[1] = -1;
+    landed = true;
 }
-else alarm[1] = 1;
+else {
+    alarm[1] = 1;
+}
+
+if (landSnd == -1 and abs(y - y_bot) &lt; 2) {
+    landSnd = play_sound(sndPipe);
+}
 </string>
           </argument>
         </arguments>
@@ -89,12 +102,13 @@ else alarm[1] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// get the three tiles above
+            <string>// get tiles above
 if (tiles == -1) {
     tiles = Array(
         tile_layer_find(tile_layer, x-16-32, y-16),
         tile_layer_find(tile_layer, x-16, y-16),
         tile_layer_find(tile_layer, x-16+32, y-16),
+        tile_layer_find(tile_layer, x-16+64, y-16)
     );
     base_x = tile_get_x(tiles[0]);
     base_y = tile_get_y(tiles[0]);
@@ -129,7 +143,8 @@ alarm[0] = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (vspeed == -8
+            <string>if (instance_exists(objPlayer)
+    and vspeed == -8
     and y &lt; y_bot-8
     and place_meeting(x, y+4, objBlock))
 {
@@ -138,6 +153,8 @@ alarm[0] = 1;
     audio_stop_sound(spikeSnd);
     alarm[0] = 8;
 }
+
+if (landed) event_user(2);
 </string>
           </argument>
         </arguments>
@@ -164,6 +181,35 @@ alarm[0] = 1;
 var i;
 for (i = 0; i &lt; array_length_1d(tiles); i++) {
     tile_set_position(tiles[i], base_x+i*32, base_y)
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="12">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///spawn explosion if player close enough
+if (not exploded
+    and collision_circle(x+16,y+16,64,objPlayer,true,false))
+{
+    instance_create(x+16, y+16, objExplosion);
+    exploded = true;
 }
 </string>
           </argument>
