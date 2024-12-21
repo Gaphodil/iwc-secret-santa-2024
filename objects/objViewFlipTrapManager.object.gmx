@@ -262,13 +262,12 @@ with (objBow) depth = other.tile_depth + 1000 - 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (room == rPaperTrap) 
-    global.edgeDeath = true;
+            <string>if (room == rPaperTrap) {}
 else {
-    global.edgeDeath = false;
     locking = false;
     lock_x = -1;
     lock_y = -1;
+    if (room != r1_1) instance_destroy();
 }
 </string>
           </argument>
