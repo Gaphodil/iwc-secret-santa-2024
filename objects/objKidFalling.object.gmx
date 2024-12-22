@@ -142,7 +142,9 @@ if (not init) {
 
     if (kill) {
         audio_pause_sound(global.currentMusic);
-        if (not variable_global_exists("fallingKilled")) {
+        if (not variable_global_exists("fallingKilled")
+            and not global.anyClear)
+        {
             global.fallingKilled = true;
         }
         else event_user(15);

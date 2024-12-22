@@ -72,5 +72,7 @@ global.makingTrigger = false;
 global.triggers = ds_list_create();
 trigger_list();
 
+global.anyClear = false; // detect if a cleared save file exists at all
+
 randomize();    //Make sure the game starts with a random seed for RNG
 

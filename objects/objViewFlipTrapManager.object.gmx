@@ -193,7 +193,9 @@ play_sound(sndPaperFlip);
 global.noPause = true;
 global.noRestart = true;
 
-if (not variable_global_exists("pmKilled")) {
+if (not variable_global_exists("pmKilled")
+    and not global.anyClear)
+{
     global.pmKilled = true;
 }
 else event_user(15);

@@ -55,6 +55,8 @@ for (var i = 0; i &lt; 3; i += 1) {
             boss[j, i] = savedata_get("bossItem" + string(j));
         }
         clear[i] = savedata_get("gameClear");
+        // update anyclear state
+        if (clear[i]) global.anyClear = true;
     }
     else {
         exists[i] = false;
