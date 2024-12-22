@@ -16,6 +16,8 @@ switch (room)
         return "musPeaks" + string(global.musicChoice);
     case rEnd:
         return "musHoliday2";
+    case rMoonCutscene:
+        return -2;
     default:
         return -1;          //Play nothing
 }

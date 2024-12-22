@@ -190,7 +190,7 @@ if (image_xscale == min_scale and not reversed)
         instance_create(400,304,objGameOver);
     }
     else {
-        room_goto(r1_1);
+        room_goto(rSpring);
     }
     
 }
@@ -198,7 +198,7 @@ else if (image_xscale == max_scale and reversed)
 {
     instance_destroy();
     event_user(15);
-    room_goto(r1_1);
+    room_goto(rMoonCutscene);
 }
 </string>
           </argument>
