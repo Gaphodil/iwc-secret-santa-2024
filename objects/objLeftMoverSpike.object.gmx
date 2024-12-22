@@ -3,7 +3,7 @@
   <spriteName>sprSpikeLeft</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>10</depth>
   <persistent>0</persistent>
   <parentName>objSpikeLeft</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -26,7 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>following = false;
-depth = 1000001
 never_follow = false;
 offset = 0;
 </string>
@@ -51,7 +50,10 @@ offset = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (following and instance_exists(objPlayer)) {
+            <string>if (not instance_exists(objPlayer)
+    or objPlayer.depth &gt; 1000000)
+    exit;
+if (following) {
     // rightside mask = 6px?
     if (x &gt; objPlayer.x + 6 + offset)
         x = objPlayer.x + 6 + offset
@@ -63,6 +65,7 @@ if (x &lt;= 320) {
     following = false;
     hspeed = 0;
 }
+if (place_meeting(x, y, objBlock)) depth = 1000000 + 1;
 </string>
           </argument>
         </arguments>
@@ -91,7 +94,7 @@ if (x &lt;= 320) {
     and x + hspeed &lt;= objPlayer.x + 6)
 {
     // avoid if player is too far above, below, or behind
-    if (objPlayer.depth &lt; depth
+    if (objPlayer.depth &lt; 1000000
         and objPlayer.x &lt;= x
         and (objPlayer.y &gt;= 256
             and objPlayer.y &lt;= 256+64)
