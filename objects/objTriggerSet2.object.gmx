@@ -76,8 +76,10 @@ with (save2) {
             <kind>1</kind>
             <string>///leftspike
 with (objLeftMoverSpike) {
-    with (make_trigger("2_left_double"))
+    with (make_trigger("2_left_double")) {
         trg_user(0);
+        trg_sound(sndSpikeTrap);
+    }
 }
 
 </string>

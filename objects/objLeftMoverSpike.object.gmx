@@ -28,6 +28,7 @@
             <string>following = false;
 depth = 1000001
 never_follow = false;
+offset = 0;
 </string>
           </argument>
         </arguments>
@@ -50,12 +51,12 @@ never_follow = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (following) {
+            <string>if (following and instance_exists(objPlayer)) {
     // rightside mask = 6px?
-    if (instance_exists(objPlayer)) {
-        if (objPlayer.x &lt; x-6)
-            x = objPlayer.x + 6
-    }
+    if (x &gt; objPlayer.x + 6 + offset)
+        x = objPlayer.x + 6 + offset
+    else if (x &lt; objPlayer.x + 6 + offset)
+        offset = min(offset, x - 6 - objPlayer.x);
 }
 if (x &lt;= 320) {
     x = 320;
@@ -86,13 +87,17 @@ if (x &lt;= 320) {
             <kind>1</kind>
             <string>if (not following
     and not never_follow
-    and place_meeting(x + hspeed, y, objPlayer))
+    and instance_exists(objPlayer)
+    and x + hspeed &lt;= objPlayer.x + 6)
 {
     // avoid if player is too far above, below, or behind
     if (objPlayer.depth &lt; depth
         and objPlayer.x &lt;= x
-        and objPlayer.y &gt;= 256
-        and objPlayer.y &lt;= 256+64)
+        and (objPlayer.y &gt;= 256
+            and objPlayer.y &lt;= 256+64)
+        or (instance_exists(objLeftMoverAlternative)
+            and objLeftMoverAlternative.touching)
+        )
     {
         // apply to both
         with (object_index) {
