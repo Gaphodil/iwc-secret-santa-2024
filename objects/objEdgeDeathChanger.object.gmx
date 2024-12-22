@@ -50,6 +50,7 @@ set_to = false;
           <argument>
             <kind>1</kind>
             <string>global.edgeDeath = set_to;
+with (objCamera) leaveRoom = not global.edgeDeath;
 </string>
           </argument>
         </arguments>
