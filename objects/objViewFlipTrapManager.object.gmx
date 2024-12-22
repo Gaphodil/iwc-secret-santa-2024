@@ -226,7 +226,12 @@ with (objBlockFake) active=false;
 with (objVerveBlockFake) active=false;
 // remove all blocks below player
 with (objBlock) {
-    if (y &gt; other.y) instance_destroy();
+    // jank for invis blocks
+    if (object_index == objBlockInvis) {
+        if (not visible) instance_destroy();
+        active = false;
+    }
+    else if (y &gt; other.y) instance_destroy();
 }
 // remove all triggers except for the position freezer
 with (objTrigger) {

@@ -8,6 +8,30 @@
   <parentName>objBlock</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
+    <event eventtype="0" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>active = true
+new_mask = -1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
@@ -25,11 +49,42 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (!visible &amp;&amp; distance_to_object(objPlayer) &lt;= 1)
+            <string>if (active and !visible &amp;&amp; distance_to_object(objPlayer) &lt;= 1)
 {
     play_sound(sndBlockChange);
     visible = true;
 }
+
+if (not active and visible and new_mask == -1) {
+    // move the collision box to be somewhere else
+    // proper usage: as global instead of one per invis block
+    new_mask = sprite_duplicate(sprBlock);
+    sprite_set_offset(new_mask, room_width, room_height) // fuckoff
+    mask_index = new_mask;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="5">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>if (new_mask != -1) sprite_delete(new_mask);
 </string>
           </argument>
         </arguments>
