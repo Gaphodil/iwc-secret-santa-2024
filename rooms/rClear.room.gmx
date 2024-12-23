@@ -3,8 +3,8 @@
   <caption></caption>
   <width>800</width>
   <height>608</height>
-  <vsnap>32</vsnap>
-  <hsnap>32</hsnap>
+  <vsnap>8</vsnap>
+  <hsnap>8</hsnap>
   <isometric>0</isometric>
   <speed>50</speed>
   <persistent>0</persistent>
@@ -31,7 +31,7 @@
     <yoffset>11010215</yoffset>
   </makerSettings>
   <backgrounds>
-    <background visible="-1" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
+    <background visible="-1" foreground="0" name="bStars2" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="-1"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
     <background visible="0" foreground="0" name="" x="0" y="0" htiled="-1" vtiled="-1" hspeed="0" vspeed="0" stretch="0"/>
@@ -60,6 +60,7 @@
     <instance objName="objSave" x="384" y="448" name="inst_5FC9FB36" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objClearSign" x="288" y="448" name="inst_2FED6A9F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="0" y="480" name="inst_6139B18B" locked="0" code="" scaleX="25" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objClearTree" x="24" y="16" name="inst_D59ECA80" locked="0" code="" scaleX="1.92999994754791" scaleY="0.910000026226044" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bDarkTiles" x="0" y="480" w="32" h="32" xo="0" yo="0" id="10005692" name="inst_026B0626" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
