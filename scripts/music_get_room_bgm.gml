@@ -14,7 +14,10 @@ switch (room)
     case rFallingTrap:
     case rPaperTrap:
         return "musPeaks" + string(global.musicChoice);
+    case rSpring:
+        return "musPeaks3";
     case rEnd:
+    case rClear:
         return "musHoliday2";
     case rMoonCutscene:
         return -2;
