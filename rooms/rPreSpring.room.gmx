@@ -216,6 +216,8 @@
     <instance objName="objBlock" x="288" y="1088" name="inst_E55DCF8B" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="480" y="864" name="inst_629ECD04" locked="0" code="" scaleX="6" scaleY="2" colour="4294967295" rotation="0"/>
     <instance objName="objBlock" x="288" y="608" name="inst_820F4B35" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
+    <instance objName="objAlignIndicator" x="411" y="3104" name="inst_572C7440" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objTrigger" x="384" y="0" name="inst_D078AED9" locked="0" code="trg=&quot;5_indicate&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bAllTiles" x="352" y="0" w="32" h="32" xo="32" yo="0" id="10005819" name="inst_2C9C4DD6" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
