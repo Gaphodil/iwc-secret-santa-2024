@@ -190,7 +190,7 @@ if (image_xscale == min_scale and not reversed)
         instance_create(400,304,objGameOver);
     }
     else {
-        room_goto(rSpring);
+        room_goto(rPreSpring);
     }
     
 }
