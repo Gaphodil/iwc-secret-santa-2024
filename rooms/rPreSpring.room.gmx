@@ -218,6 +218,10 @@
     <instance objName="objBlock" x="288" y="608" name="inst_820F4B35" locked="0" code="" scaleX="2" scaleY="4" colour="4294967295" rotation="0"/>
     <instance objName="objAlignIndicator" x="411" y="3104" name="inst_572C7440" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objTrigger" x="384" y="0" name="inst_D078AED9" locked="0" code="trg=&quot;5_indicate&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objCherryShooter" x="112" y="816" name="inst_8F6960D5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objCherryShooter" x="688" y="1264" name="inst_3EE50B48" locked="0" code="_speed = -6;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objCherryDeleter" x="704" y="800" name="inst_471BB111" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objCherryDeleter" x="64" y="1248" name="inst_4CF2B4E4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bAllTiles" x="352" y="0" w="32" h="32" xo="32" yo="0" id="10005819" name="inst_2C9C4DD6" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>
