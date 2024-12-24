@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>objPlayerKiller</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_xscale = -1;
+            <string>image_xscale = -2;
+image_yscale = 2;
 image_speed = 1/15;
 x = 448-16;
 y = 128;
@@ -35,16 +36,17 @@ var tree_layer = 1000011;
 tile_layer_delete_at(tree_layer, x, y);
 
 // spawn tree particles
-repeat(30) {
+repeat(40) {
     instance_create(
-        x + irandom_range(-6,6),
-        y-96 + irandom_range(-6, 6),
+        x + irandom_range(-7, 7),
+        y-96 + irandom_range(-7, 7),
         objTreeParticle
     );
 }
 
-sound_play(sndTimber);
+play_sound(sndTimber);
 steps = 0;
+max_steps = 15;
 </string>
           </argument>
         </arguments>
@@ -67,8 +69,10 @@ steps = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (steps &lt; 9) {
-    image_angle -= 10;
+            <string>if (steps &lt; max_steps) {
+    image_angle -= 80/max_steps;
+    // rotation only isnt working so:
+    y += 50/max_steps;
     steps++;
 }
 </string>

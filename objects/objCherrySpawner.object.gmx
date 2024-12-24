@@ -27,18 +27,20 @@
             <kind>1</kind>
             <string>active = false;
 false_start = false;
+outside_left = false;
 start = false;
+ended = false;
 
 t = 0;
 
 width = 9;
-xposes = array_create(width);
+x_offs = array_create(width);
 indicators = array_create(width);
 indic_alphas = array_create(width);
 
 var i;
 for (i = 0; i &lt; width; i++) {
-    xposes[i] = x + 32*i;
+    x_offs[i] = 32*i;
     indicators[i] = false;
     indic_alphas[i] = 0.0;
 }
@@ -46,10 +48,21 @@ for (i = 0; i &lt; width; i++) {
 left_wall = array_create(5);
 right_wall = array_create(5);
 
-pattern1 = Array(0,0,0,1,1,1,1,1,1);
-pattern2 = Array(1,1,1,1,1,1,0,0,0);
-pattern3 = Array(1,0,1,0,1,0,1,0,1);
-pattern4 = Array(0,1,0,1,0,1,0,1,0);
+patterns = array_create(4);
+patterns[0] = Array(0,0,0,1,1,1,1,1,1);
+patterns[1] = Array(1,1,1,1,1,1,0,0,0);
+patterns[2] = Array(1,0,1,0,1,0,1,0,1);
+patterns[3] = Array(0,1,0,1,0,1,0,1,0);
+
+attack_launched = Array(0,0,0,0);
+attack_done = Array(0,0,0,0);
+attack_times = Array(
+    10, 70, 130, 162, 193, 224
+);
+
+active_pattern = -1;
+final_trap = 300;
+end_t = 350;
 
 with (make_trigger("3_cage")) trg_user(0);
 </string>
@@ -76,14 +89,91 @@ with (make_trigger("3_cage")) trg_user(0);
             <kind>1</kind>
             <string>///move leftwall left vfast
 var dur = 25;
-var i;
-for (i = 0; i &lt; 5; i++) {
-    left_wall[i].x =
-        EaseOutSine(t, x-32, x-32*8, dur);
+var i, xpos;
+if (outside_left) {
+    xpos = EaseOutSine(t, x-32, x-32*8, dur);
+    for (i = 0; i &lt; 5; i++) left_wall[i].x = xpos;
 }
+else {
+    xpos = EaseOutSine(t, x+32*width, x+32*(width+8), dur);
+    for (i = 0; i &lt; 5; i++) right_wall[i].x = xpos;
+}
+
 alarm[11] = 1;
 t++;
 if (t &gt; dur*2) alarm[11] = -1;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///move left 5 blocks
+var dur = 32*5 / 8;
+x -= 8;
+alarm[2] = 1;
+t++;
+if (t &gt; dur) {
+    alarm[2] = -1;
+    alarm[1] = 1;
+    t = 0;
+    instance_create(0, 0, objPalm);
+    active_pattern = -2; // hide indic
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///move wallcherries back to start
+var dur = 25;
+var i;
+for (i = 0; i &lt; 5; i++) {
+    var ypos = EaseOutSine(t, y+32*i, y-64, dur);
+    left_wall[i].y = ypos;
+    right_wall[i].y = ypos;
+    // destroy at end of dur
+    if (t &gt;= dur) {
+        instance_destroy(left_wall[i]);
+        instance_destroy(right_wall[i]);
+    }
+}
+alarm[1] = 1;
+t++;
+if (t &gt; dur) alarm[1] = -1;
 </string>
           </argument>
         </arguments>
@@ -110,10 +200,9 @@ if (t &gt; dur*2) alarm[11] = -1;
 var dur = 25;
 var i;
 for (i = 0; i &lt; 5; i++) {
-    left_wall[i].y =
-        EaseOutSine(t, y-64, y+32*i, dur);
-    right_wall[i].y =
-        EaseOutSine(t, y-64, y+32*i, dur);
+    var ypos = EaseOutSine(t, y-64, y+32*i, dur);
+    left_wall[i].y = ypos;
+    right_wall[i].y = ypos;
 }
 alarm[0] = 1;
 t++;
@@ -123,7 +212,7 @@ if (t &gt; dur) alarm[0] = -1;
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="1">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -144,13 +233,173 @@ if (t &gt; dur) alarm[0] = -1;
 if (not active) exit;
 if (objPlayer.y &gt; 160) exit;
 
-if (not false_start and alarm[0] == -1 and objPlayer.x &lt; x-32)
+if (alarm[0] == -1 and not false_start and not start)
 {
-    false_start = true;
-    play_sound(sndSpring);
-    t = 0;
-    alarm[11] = 1; // kill
+    if (objPlayer.x &lt; x-32 or objPlayer.x &gt; x+32*width)
+    {
+        false_start = true;
+        outside_left = objPlayer.x &lt; x-32;
+        play_sound(sndSpring);
+        t = 0;
+        alarm[11] = 1; // kill
+    }
+    else {
+        start = true;
+        t = 0;
+    }
 }
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///spawn attack patterns
+if (start and not ended)
+{
+    var i;
+    for (i = 0; i &lt; 4; i++) {
+        if (not attack_launched[i] and t &gt;= attack_times[i]) {
+            active_pattern = i; // indicate attack
+            attack_launched[i] = true;
+        }
+        if (not attack_done[i] and t &gt;= attack_times[i] + 30) {
+            play_sound(sndCherry);
+            active_pattern = -2; // spawn attack
+            attack_done[i] = true;
+            if (i == 2 or i == 3) {
+                attack_times[i] = attack_times[i+2];
+                attack_launched[i] = false;
+                attack_done[i] = false;
+                attack_times[i+2] = 9999; // don't retrigger
+            }
+        }
+    }
+    if (t &gt;= final_trap) {
+        active_pattern = 0;
+        final_trap = 9999; // don't retrigger
+    }
+    if (t &gt;= end_t) {
+        event_user(1);
+    }
+    t++;
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///handle patterns
+var i;
+if (active_pattern &gt;= 0) {
+    var p = patterns[active_pattern];
+    for (i = 0; i &lt; width; i++) {
+        indicators[i] = p[i];
+    }
+}
+else if (active_pattern == -2) {
+    for (i = 0; i &lt; width; i++) {
+        if (indicators[i]) {
+            indicators[i] = false;
+            // spawn cherry at pos
+            if (final_trap &lt; 9999) {
+                var xpos = x+x_offs[i];
+                var new_c = instance_create(xpos, y-32, objCherry);
+                with (new_c) vspeed = 6;
+            }
+        }
+    }
+}
+
+if (active_pattern != -1) active_pattern = -1;
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///handle indicators
+var i;
+for (i = 0; i &lt; width; i++) {
+    if (indicators[i]) {
+        indic_alphas[i] = min(0.4, indic_alphas[i] + 0.02);
+    } else {
+        indic_alphas[i] = max(0, indic_alphas[i] - 0.04);
+    }
+}
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="11">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>ended = true;
+play_sound(sndSpikeTrap);
+t = -1;
+alarm[2] = 1;
 </string>
           </argument>
         </arguments>
@@ -214,7 +463,7 @@ for (i = 0; i &lt; width; i++) {
     var alpha = indic_alphas[i];
     if (alpha &gt; 0) {
         draw_sprite_ext(
-            sprCherry, 0, xposes[i], y,
+            sprCherry, 0, x+x_offs[i], y,
             1, 1, 0, c_white, alpha
         );
     }
