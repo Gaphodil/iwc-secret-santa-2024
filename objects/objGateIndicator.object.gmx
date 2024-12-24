@@ -3,7 +3,7 @@
   <spriteName>sprArrow</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>0</depth>
+  <depth>1000001</depth>
   <persistent>-1</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,8 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>depth = 1000001;
-image_angle = -90;
+            <string>image_angle = -90;
 
 dir = 1;
 

@@ -17,7 +17,7 @@ global.menuSound = sndJump;         //Sets what sound to use for navigating the 
 
 //World
 global.startRoom = r1_1;         //Sets which room to begin with
-global.roomCaptionDef = "Secret Santa 2024";  //Sets default window caption (only works with the Professional version of Studio)
+global.roomCaptionDef = "I Wanna Find a Suitable Christmas Tree to Receive my Christmas Presents";  //Sets default window caption (only works with the Professional version of Studio)
 global.deathMusicMode = 0;          //Sets whether or not to play death music when the player dies (0 = no death music, 1 = instantly pause current music, 2 = fade out current music)
 global.pauseDelayLength = 40;       //Sets the delay in frames in which the player can pause/unpause the game (can be set to 0 to disable pause delay)
 global.timeWhenDead = true;         //Sets whether or not to count the in-game timer when the player is dead
