@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_angle = 90; // point right
+            <string>global.pipe2 = false;
+image_angle = 90; // point right
 
 xpos0 = x;
 ypos0 = y;
@@ -99,7 +100,7 @@ if (target &gt; 0 and t &lt; 50)
 }
 if (not global_bool("pipe2")) {
     global.pipe2 = true;
-    with (objJumpRefresher) x += 4;
+    with (objJumpRefresher) x += 2;
 }
 </string>
           </argument>
