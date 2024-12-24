@@ -39,7 +39,6 @@ global.deathSound = -1;
 global.gameOverMusic = -1;      
 global.musicFading = false;     //Used for music fading out on death
 global.currentGain = 0;         //Used for music fading out on death
-global.musicChoice = 1 + irandom(1); //Randomly picks one of two songs
 
 global.menuSelectPrev[0] = 0;   //Keeps track of the previously selected option when navigating away from the difficulty menu
 global.menuSelectPrev[1] = 0;   //Keeps track of the previously selected option when navigating away from the options menu

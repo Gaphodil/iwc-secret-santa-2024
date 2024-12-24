@@ -11,6 +11,7 @@ global.fullscreenMode = ini_read_real("Settings", "Fullscreen_mode", false);
 // global.smoothingMode = ini_read_real("Settings", "Smoothing_mode", false);
 global.vsyncMode = ini_read_real("Settings", "Vsync_mode", false);
 global.windowScale = clamp(floor(ini_read_real("Settings", "Window_scale", 2)), 1, 8) / 2;
+global.musicChoiceOption = clamp(floor(ini_read_real("Settings", "Game_music", 0)), 0, 2);
 
 audio_master_gain(global.volumeLevel/100);
 music_gain(global.musVolumeLevel/100);
@@ -21,6 +22,9 @@ if (global.vsyncMode) {
 global.windowWidth  = global.defaultWindowWidth * global.windowScale;
 global.windowHeight = global.defaultWindowHeight * global.windowScale;
 update_window_size();
+global.musicChoice = global.musicChoiceOption;
+if (global.musicChoice == 0)
+    global.musicChoice = 1+irandom(1); //Randomly picks one of two songs
 
 input_define("loadKeyboardConfig");
 

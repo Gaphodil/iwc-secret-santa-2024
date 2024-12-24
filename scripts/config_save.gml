@@ -11,6 +11,7 @@ ini_write_real("Settings", "Fullscreen_mode",   global.fullscreenMode);
 // ini_write_real("Settings", "Smoothing_mode",    global.smoothingMode);
 ini_write_real("Settings", "Vsync_mode",        global.vsyncMode);
 ini_write_real("Settings", "Window_scale",      round(global.windowScale * 2));
+ini_write_real("Settings", "Game_music",        global.musicChoiceOption);
 
 input_define("saveKeyboardConfig");
 
