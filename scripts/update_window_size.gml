@@ -3,6 +3,7 @@
 // Updates the size of the window to the globals,
 // then centers it in the main display.
 
+if (global.fullscreenMode) exit;
 window_set_size(global.windowWidth, global.windowHeight);
 var disp_w = display_get_width();
 var disp_h = display_get_height();
