@@ -29,7 +29,7 @@
 image_yscale = 2;
 image_speed = 1/15;
 x = 448-16;
-y = 128;
+y = 160;
 
 // delete tree existing
 var tree_layer = 1000011;
@@ -46,7 +46,7 @@ repeat(40) {
 
 play_sound(sndTimber);
 steps = 0;
-max_steps = 15;
+max_steps = 16;
 </string>
           </argument>
         </arguments>
@@ -71,8 +71,7 @@ max_steps = 15;
             <kind>1</kind>
             <string>if (steps &lt; max_steps) {
     image_angle -= 80/max_steps;
-    // rotation only isnt working so:
-    y += 50/max_steps;
+    y += 16/max_steps;
     steps++;
 }
 </string>
