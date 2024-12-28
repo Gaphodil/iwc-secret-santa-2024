@@ -1,4 +1,4 @@
-# I Wanna Find a Suitable Christmas Tree for my Christmas Presents
+# I Wanna Find a Suitable Christmas Tree to Receive my Christmas Presents
 
 This is the source code for a brief, trap/troll-centric [fangame](https://cwpat.me/fangames-intro) I made for the I Wanna Community Secret Santa event, made during 2024-12-01 to 2024-12-24, for my assigned recipient, Neos, and can be downloaded [here](https://gaphodil.itch.io/iwc-secret-santa-2024). [This repo](https://github.com/Gaphodil/iwc-secret-santa-2024) is incomplete in terms of assets, but a full version containing the missing images and cut, volume-balanced audio files can be downloaded [here](https://drive.google.com/file/d/1xFru8cSc2XaFoXw4WWMQyG0QjX3819Ou/view).
 
