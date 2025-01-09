@@ -137,8 +137,8 @@
     <instance objName="objVerveBlockFake" x="544" y="576" name="inst_97E02233" locked="0" code="left=32&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objVerveBlockFake" x="512" y="576" name="inst_F845DF0F" locked="0" code="left=32&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objTrigger" x="544" y="416" name="inst_564068D6" locked="0" code="trg = &quot;1_embedspike&quot;&#xA;" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="objTrigger" x="576" y="416" name="inst_F0F853D1" locked="0" code="trg = &quot;1_fakeoutspike_key&quot;&#xA;" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="objTrigger" x="512" y="511" name="inst_90679BE5" locked="0" code="trg = &quot;1_fakeoutspike_trg&quot;&#xA;key = &quot;1_fakeoutspike_key&quot;&#xA;" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objTrigger" x="544" y="416" name="inst_F0F853D1" locked="0" code="trg = &quot;1_fakeoutspike_key&quot;&#xA;key = &quot;1_post_embedspike&quot;&#xA;" scaleX="2" scaleY="2" colour="4294967295" rotation="0"/>
+    <instance objName="objTrigger" x="512" y="511" name="inst_90679BE5" locked="0" code="trg = &quot;1_fakeoutspike_trg&quot;&#xA;key = &quot;1_fakeoutspike_key&quot;" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objEmbeddingSpike" x="544" y="480" name="embedSpike" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objTrigger" x="608" y="320" name="inst_03B2D020" locked="0" code="trg = &quot;1_fakeoutspike_trg&quot;&#xA;key = &quot;1_fakeoutspike_key&quot;&#xA;" scaleX="4" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objVerveBlockFake" x="672" y="224" name="inst_260D1965" locked="0" code="left=32&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -167,7 +167,7 @@
     <instance objName="objSpikeUp" x="448" y="1120" name="inst_CB420DD0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeDown" x="448" y="992" name="inst_DF785CC3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objTrigger" x="461" y="461" name="gateTrg" locked="0" code="trg = &quot;1_gate&quot;&#xA;" scaleX="0.200000002980232" scaleY="0.200000002980232" colour="4294967295" rotation="0"/>
-    <instance objName="objTrigger" x="496" y="224" name="inst_A00F60A0" locked="0" code="trg = &quot;2_jumpedover&quot;&#xA;key = &quot;2_left_double&quot;&#xA;" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objTrigger" x="480" y="224" name="inst_A00F60A0" locked="0" code="trg = &quot;2_jumpedover&quot;&#xA;key = &quot;2_left_double&quot;&#xA;&#xA;sprite_index = spr1x1;&#xA;x += 11;&#xA;image_xscale = 32*4 - 11*2;&#xA;//image_yscale = 32*2 - 21;&#xA;image_yscale = 32-21;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objViewFlipTrapManager" x="288" y="192" name="inst_180F56C0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objTrigger" x="224" y="352" name="inst_B487F976" locked="0" code="key = &quot;2_jumpedover&quot;&#xA;trg = &quot;2_jumpedover_2&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objEdgeDeathChanger" x="0" y="0" name="inst_12BEE46E" locked="0" code="image_yscale = 608 div 32" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -207,12 +207,12 @@
     <instance objName="objSpikeUp" x="416" y="352" name="inst_4973D69E" locked="0" code="depth=1000001&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objBlockInvis" x="320" y="256" name="leftInvisBlock" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objTrigger" x="464" y="320" name="inst_052925F7" locked="0" code="y -= 96&#xA;image_yscale = 3&#xA;key = &quot;2_left_double&quot;&#xA;trg = &quot;2_left_floor&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="objTrigger" x="352" y="351" name="inst_A53B031E" locked="0" code="key = &quot;2_left_floor&quot;&#xA;trg = &quot;2_left_floor_touched&quot;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objTrigger" x="352" y="351" name="inst_A53B031E" locked="0" code="trg = &quot;2_left_floor_touched&quot;&#xA;" scaleX="3" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objLeftMoverSpike" x="704" y="256" name="inst_5BD259D6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objLeftMoverSpike" x="704" y="288" name="inst_2C0EED42" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objFloorImitators" x="352" y="320" name="inst_825169FC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objTrigger" x="336" y="256" name="inst_F1AC9527" locked="0" code="trg=&quot;2_left_toofast&quot;&#xA;" scaleX="1" scaleY="2" colour="4294967295" rotation="0"/>
-    <instance objName="objLeftMoverAlternative" x="448" y="224" name="inst_1BE349B4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objLeftMoverAlternative" x="448" y="224" name="inst_1BE349B4" locked="0" code="" scaleX="0.5" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objEdgeDeathChanger" x="224" y="0" name="inst_932AF78B" locked="0" code="image_yscale = 608 div 32&#xA;set_to = true;&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeUp" x="960" y="512" name="inst_51E58C28" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objSpikeUp" x="992" y="448" name="inst_39FCA695" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
@@ -251,6 +251,8 @@
     <instance objName="objTrigger" x="448" y="0" name="inst_86334334" locked="0" code="trg = &quot;3_cage&quot;&#xA;" scaleX="9" scaleY="5" colour="4294967295" rotation="0"/>
     <instance objName="objGateIndicator" x="432" y="400" name="inst_9576B626" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="objGateIndicator" x="432" y="528" name="inst_0E3C0AB8" locked="0" code="dir = -1&#xA;" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objTrigger" x="512" y="511" name="inst_A0BC3730" locked="0" code="trg = &quot;1_post_embedspike&quot;&#xA;key = &quot;1_embedspike&quot;" scaleX="2" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="objLeftMoverIndicator" x="456" y="208" name="inst_0B4F8F6E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bTree" x="384" y="0" w="111" h="168" xo="0" yo="0" id="10003643" name="inst_9FA4354B" depth="1000011" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

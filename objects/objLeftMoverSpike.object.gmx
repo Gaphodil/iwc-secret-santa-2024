@@ -94,18 +94,25 @@ if (place_meeting(x, y, objBlock)) depth = 1000000 + 1;
     and x + hspeed &lt;= objPlayer.x + 6)
 {
     // avoid if player is too far above, below, or behind
+    // 1.1: remove original sol and keep only alt,
+    // and have player face left
     if (objPlayer.depth &lt; 1000000
         and objPlayer.x &lt;= x
-        and (objPlayer.y &gt;= 256
-            and objPlayer.y &lt;= 256+64)
-        or (instance_exists(objLeftMoverAlternative)
-            and objLeftMoverAlternative.touching)
+        // and (objPlayer.y &gt;= 256
+        //     and objPlayer.y &lt;= 256+64)
+        and instance_exists(objLeftMoverAlternative)
+        and objLeftMoverAlternative.touching
+        and objPlayer.xScale == -1
         )
     {
         // apply to both
         with (object_index) {
             following = true;
             hspeed = 0;
+        }
+        // 1.1: disable hint
+        with (objLeftMoverIndicator) {
+            event_user(1);
         }
     }
 }
@@ -154,7 +161,7 @@ if (place_meeting(x, y, objBlock)) depth = 1000000 + 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>hspeed = -5;
+            <string>hspeed = -6;
 </string>
           </argument>
         </arguments>
