@@ -16,12 +16,12 @@ global.musicChoiceOption = clamp(floor(ini_read_real("Settings", "Game_music", 0
 audio_master_gain(global.volumeLevel/100);
 music_gain(global.musVolumeLevel/100);
 window_set_fullscreen(global.fullscreenMode);
-if (global.vsyncMode) {
-    set_vsync();
-}
 global.windowWidth  = global.defaultWindowWidth * global.windowScale;
 global.windowHeight = global.defaultWindowHeight * global.windowScale;
 update_window_size();
+if (global.vsyncMode) {
+    set_vsync();
+}
 global.musicChoice = global.musicChoiceOption;
 if (global.musicChoice == 0)
     global.musicChoice = 1+irandom(1); //Randomly picks one of two songs
